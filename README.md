@@ -152,9 +152,15 @@ At this point, your app is setup to use in the LAMP cluster. If you'd like to in
 
 ### WordPress installer
 
-Once you completed the steps above and you can see your WordPress website running in the browser, please follow the instructions here to complete configuring a database and finishing a [WordPress install](https://codex.wordpress.org/Installing_WordPress#Famous_5-Minute_Installation).
+Once you complete the steps above and you can see your WordPress website running in the browser, please follow the instructions here to complete configuring a database and finishing a [WordPress install](https://codex.wordpress.org/Installing_WordPress#Famous_5-Minute_Installation).
 
 If you chose `true` for the `htmlLocalCopy` switch, WordPress will be running from a read-only directory, so the installer won't be able to create a `wp-config.php` file for you. However, the installer will provide you with the full content of the required config file. On the controller VM, copy that content into the file `/azlamp/html/wpsitename.mydomain.com/wp-config.php`. You then need to trigger a replication of the data, by running the script `/usr/local/bin/update_last_modified_time.azlamp.sh` again from the controller VM, as root. Data will be replicated in around one minute.
+
+### Ansible WordPress installer
+In-order to install Ansible WordPress Installation please click [here](https://github.com/Azure/LAMP/blob/master/docs/WordPress-install.md).
+
+### Ansible Moodle installer
+In-order to install Ansible Moodle Installation please click [here](https://github.com/Azure/LAMP/blob/master/docs/Moodle-install.md).
 
 ## Code of Conduct
 

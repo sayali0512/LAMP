@@ -16,6 +16,14 @@ jq -r '.parameters | to_entries[] | "### " + .key + "\n\n" + .value.metadata.des
 
 ## Available Parameters
 
+### Type Of Template 
+
+This represents type of the template.
+
+Type: String
+
+Default: LAMP ARM TEMPLATE
+
 ### _artifactsLocation
 
 The base URI where artifacts required by this template are located. When the template is deployed using the accompanying scripts, a private location in the subscription will be used and this value will be automatically generated.
@@ -206,6 +214,26 @@ Possible Values: ["Premium_LRS","Standard_LRS"]
 
 Default: Premium_LRS
 
+### ubuntu version
+
+OS version
+
+Type: string
+
+Possible values 16.04-LTS, 18.04-LTS
+
+Default: 16.04-LTS
+
+### PHP Version
+
+PHP Version
+
+Type: string
+
+Possible Values: 7.2, 7.3, 7.4
+
+Default: 7.4
+
 ### dbServerType
 
 Database type
@@ -228,11 +256,11 @@ Default: dbadmin
 
 ### mysqlPgresVcores
 
-MySql/Postgresql vCores. For Basic tier, only 1 & 2 are allowed. For GeneralPurpose tier, 2, 4, 8, 16, 32 are allowed. For MemoryOptimized, 2, 4, 8, 16 are allowed.
+MySql/Postgresql vCores. For Basic tier, only 1 & 2 are allowed. For GeneralPurpose tier, 2, 4, 8, 16, 32, 64 are allowed. For MemoryOptimized, 2, 4, 8, 16, 32 are allowed.
 
 Type: int
 
-Possible Values: [1,2,4,8,16,32]
+Possible Values: [1,2,4,8,16,32,64]
 
 Default: 2
 
@@ -272,7 +300,7 @@ Mysql version
 
 Type: string
 
-Possible Values: ["5.6","5.7"]
+Possible Values: ["5.6","5.7, 8.0"]
 
 Default: 5.7
 
@@ -282,7 +310,7 @@ Postgresql version
 
 Type: string
 
-Possible Values: ["9.5","9.6"]
+Possible Values: ["9.5","9.6,10.0, 11.0"]
 
 Default: 9.6
 
@@ -322,7 +350,7 @@ MS SQL DB edition
 
 Type: string
 
-Possible Values: ["Basic","Standard"]
+Possible Values: ["Basic","Standard", "Premium"]
 
 Default: Standard
 
@@ -338,11 +366,11 @@ Default: 12.0
 
 ### fileServerType
 
-File server type: GlusterFS, NFS, and NFS-HA (2-VM highly available NFS cluster)
+File server type: GlusterFS, NFS, Azure Files and NFS-HA (2-VM highly available NFS cluster)
 
 Type: string
 
-Possible Values: ["gluster","nfs","nfs-ha","nfs-byo"]
+Possible Values: ["gluster","nfs","nfs-ha","nfs-byo","azurefiles"]
 
 Default: nfs
 
@@ -462,9 +490,10 @@ Default:
 
 Type: string
 
-Possible Values: ["Standard_Small","Standard_Medium","Standard_Large","WAF_Medium","WAF_Large"]
+Possible Values: ["Standard_Small","Standard_Medium","Standard_Large","WAF_Medium","Standard_v2","WAF_Large","WAF_v2"]
 
-Default: Standard_Medium
+Default: Standard_v2
+
 
 ### appGwSkuTier
 
@@ -472,9 +501,9 @@ Default: Standard_Medium
 
 Type: string
 
-Possible Values: ["Standard","WAF"]
+Possible Values: ["Standard","Standard_v2","WAF"]
 
-Default: Standard
+Default: Standard_v2
 
 ### appGwSkuCapacity
 

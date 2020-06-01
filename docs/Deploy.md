@@ -107,8 +107,8 @@ Depending on the LAMP apps you deploy and the expected traffic, you will want to
 As of the time of this writing, Azure supports "Basic", "General Purpose" and "Memory Optimized" tiers for MySQL/PostgreSQL database instances. In addition the `mysqlPgresVcores` parameter defines the number of vCores for each DB server instance, and the number of those you can use is limited by database tier:
 
 - Basic: 1, 2
-- General Purpose: 2, 4, 8, 16, 32
-- Memory Optimized: 2, 4, 8, 16
+- General Purpose: 2, 4, 8, 16, 32, 64
+- Memory Optimized: 2, 4, 8, 16, 32
 
 This value also limits the maximum number of connections, as defined
 here: https://docs.microsoft.com/en-us/azure/mysql/concepts-limits
