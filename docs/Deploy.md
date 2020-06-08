@@ -1,6 +1,6 @@
 # Deploy Autoscaling LAMP Stack to Azure
 
-After following the steps in this this document you will have a new cluster with auto-scaling frontends, ready to host your LAMP applications at scale.
+After following the steps in this document, you will have a new cluster with auto-scaling frontends, ready to host your LAMP applications at scale.
 The filesystem behind it is mirrored for high availability and
 optionally backed up through Azure.
 
