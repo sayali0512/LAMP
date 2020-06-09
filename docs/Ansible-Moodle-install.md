@@ -1,10 +1,10 @@
 # Moodle Installation 
-
 This document will guide us how to install Moodle using Ansible on top of LAMP stack .
 ## Prerequisites
 
 - This requires LAMP stack deployment.
 - Make sure that Host VM (where Moodle to be installed) and Ansible VM should be in the same resource group and region.
+- Current Moodle installation script supports Ngnix & MySql Database
 
 ### Enabling Password Authentication  
 
@@ -50,7 +50,7 @@ o	Host Load Balancer IP
 Using SSH please login into Ansible VM and go to the path /home/azureadmin(username)
 ```
 To login to Anisble VM below details are required,
-Ansible VM IP (User can get it from Azure Portal after successfull Anisble deployment in the previous step)
+Ansible VM IP (User can get it from Azure Portal after successfull Anisble deployment in the [previous step])
 UserID: azureadmin
 SSH Key
  ```
@@ -61,7 +61,8 @@ Run the following command to install Moodle in Host VM by using ansible playbook
 Command to execute: bash run.sh
 ```
 ### Installation and Replication of Moodle
-[Workflow]
+Workflow of the Moodle installation.
+![](https://github.com/krishnaitalent/LAMP/blob/lamp_docmentation/images/Moodle_Flow_Diagram.png)
 #### Installing Moodle into host VM.
 	
 - bash run.sh file will run ansible script moodle_script.sh which will run the playbook with the user inputs.
@@ -73,14 +74,14 @@ Clone the Moodle repo “ansible_playbook” which contains Roles.
     1. sshkeyconfig
     2. Moodle
     3. Replication
-
-- Role: SSH Key Configuration. 
-	Which will Generate the SSH key pair and will copy to the targeted Host VM using password authentication.
-- Role: Moodle
-	Moodle will be downloaded in .zip format and installed in Host VM at target location.
-- Role: Replication: 
-  It will download the script “moodle_replication.sh” and executes the script by this Moodle directory will be replicating to Virtual Machine Scale Set (VMSS) 
-
+```
+	- Role: SSH Key Configuration. 
+		Which will Generate the SSH key pair and will copy to the targeted Host VM using password authentication.
+	- Role: Moodle
+		Moodle will be downloaded in .zip format and installed in Host VM at target location.
+	- Role: Replication: 
+	  It will download the script “moodle_replication.sh” and executes the script by this Moodle directory will be replicating to Virtual Machine Scale Set (VMSS) 
+```
 ```
 Replication Script(moodle_replication.sh) will have following functions
 - Change location: It will move the Moodle folder to /azlamp/html/ location

@@ -1,10 +1,11 @@
 # WordPress and WooCommerce Installation 
-[Workflow]
+![Workflow](https://github.com/krishnaitalent/LAMP/blob/lamp_docmentation/images/WordPress_Flow_Diagram.png)
 This document will guide us how to install WordPress and WooCommerce plugin using Ansible on top of LAMP stack .
 ## Prerequisites
 
 - This requires LAMP stack deployment.
 - Make sure that Host VM (where WordPress to be installed) and Ansible VM should be in the same resource group and region.
+- Current WordPress installatin script supports Ngnix & MySql Database
 
 ### Enabling Password Authentication  
 
