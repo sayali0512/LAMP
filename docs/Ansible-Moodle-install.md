@@ -4,7 +4,7 @@ This document will guide us how to install Moodle using Ansible on top of LAMP s
 
 - This requires LAMP stack deployment.
 - Make sure that Host VM (where Moodle to be installed) and Ansible VM should be in the same resource group and region.
-- Current Moodle installation script supports Ngnix & MySql Database
+- Current Moodle installation script supports Ngnix & MySQL Database
 
 ### Enabling Password Authentication  
 
@@ -17,7 +17,7 @@ sudo sed -i "s~#   StrictHostKeyChecking ask~   StrictHostKeyChecking no~" /etc/
 sudo systemctl restart sshd
 sudo passwd azureadmin
 ```
-- Above command will promt user to set new password. 
+- Above command will prompt user to set new password. 
 ```
 Note: 
 - This new password should be given as an input to the below Ansible VM template deployment.
@@ -50,7 +50,7 @@ o	Host Load Balancer IP
 Using SSH please login into Ansible VM and go to the path /home/azureadmin(username)
 ```
 To login to Anisble VM below details are required,
-Ansible VM IP (User can get it from Azure Portal after successfull Anisble deployment in the [previous step])
+Ansible VM IP (User can get it from Azure Portal after successful Anisble deployment in the [previous step])
 UserID: azureadmin
 SSH Key
  ```
@@ -86,12 +86,16 @@ Clone the Moodle repo “ansible_playbook” which contains Roles.
 Replication Script(moodle_replication.sh) will have following functions
 - Change location: It will move the Moodle folder to /azlamp/html/ location
 - Configure SSL certs: Generate OpenSSL certificates to /azlamp/certs/ folder
-- Linking data location:  This function will link data to all shared  web frontend instances
+- Linking data location:  This function will link data to all shared web frontend instances
 - Update Nginx Configuration: This function will update the Nginx configuration file.
 - Moodledata: It will create moodledata directory in azlamp folder.
 - Replication: This function will replicate the Moodle folder to the VMSS instance.
 ```
-Inorder to access the Moodle use Load Balancer IP ((User can get it from Azure Portal)
+In-order to access the Moodle use Load Balancer IP ((User can get it from Azure Portal)
+
+User should be able to get Username and password of the Moodle from moodle.txt at /home/azureadmin location.
+
+Following above steps Moodle installation will be completed successfully.
 
 User should be able to get Username and password of the Moodle from moodle.txt at /home/azureadmin location.
 

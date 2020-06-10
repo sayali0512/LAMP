@@ -5,7 +5,7 @@ This document will guide us how to install WordPress and WooCommerce plugin usin
 
 - This requires LAMP stack deployment.
 - Make sure that Host VM (where WordPress to be installed) and Ansible VM should be in the same resource group and region.
-- Current WordPress installatin script supports Ngnix & MySql Database
+- Current WordPress installation script supports Ngnix & MySQL Database
 
 ### Enabling Password Authentication  
 
@@ -18,7 +18,7 @@ sudo sed -i "s~#   StrictHostKeyChecking ask~   StrictHostKeyChecking no~" /etc/
 sudo systemctl restart sshd
 sudo passwd azureadmin
 ```
-- Above command will promt user to set new password. 
+- Above command will prompt user to set new password. 
 ```
 Note: 
 - This new password should be given as an input to the below Ansible VM template deployment.
@@ -49,7 +49,7 @@ o	WordPress Domain Name
 Using SSH please login into Ansible VM and go to the path /home/azureadmin(username)
 ```
 To login to Anisble VM below details are required,
-Ansible VM IP (User can get it from Azure Portal after successfull Anisble deployment in the previous step)
+Ansible VM IP (User can get it from Azure Portal after successful Anisble deployment in the previous step)
 UserID: azureadmin
 SSH Key
  ```
@@ -81,7 +81,7 @@ Role: Replication
 - Create Nginx Configuration: Create Nginx configuration file in VMSS instance
 - Replication: Replicate the WordPress folder to the VMSS instance.
 ```
-Inorder to access the WordPress use Load Balancer IP.
+In-order to access the WordPress use Load Balancer IP.
 
 User should be able to get Username and password of the WordPress from wordpress.txt at /home/azureadmin location.
 
