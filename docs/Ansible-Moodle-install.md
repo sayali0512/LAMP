@@ -55,11 +55,7 @@ UserID: azureadmin
 SSH Key
  ```
  To generate SSH key [clickhere](https://help.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
-  
-Run the following command to install Moodle in Host VM by using ansible playbook.
-```
-Command to execute: bash run.sh
-```
+
 ### Installation and Replication of Moodle
 Workflow of the Moodle installation.
 ![](https://github.com/krishnaitalent/LAMP/blob/lamp_docmentation/images/Moodle_Flow_Diagram.png)
@@ -99,4 +95,4 @@ Following above steps Moodle installation will be completed successfully.
 
 User should be able to get Username and password of the Moodle from moodle.txt at /home/azureadmin location.
 
-Following above steps Moodle installation will be completed successfully.
+Following above steps Moodle installation will be completed successfully and user should be able to access Moodle page using Loadbalancer IP.

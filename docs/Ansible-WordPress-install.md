@@ -55,10 +55,6 @@ SSH Key
  ```
  To generate SSH key [clickhere](https://help.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
   
-Run the following command to install WordPress in Host VM by using ansible playbook.
-```
-Command to execute: bash run.sh
-```
 ### Installation and Replication of WordPress with WooCommerce Plugin
 
 #### Installing WordPress into host VM.
@@ -85,4 +81,4 @@ In-order to access the WordPress use Load Balancer IP.
 
 User should be able to get Username and password of the WordPress from wordpress.txt at /home/azureadmin location.
 
-Following above steps WordPress installation with WooCommerce plugin will be completed successfully.
+Following above steps WordPress installation will be completed successfully and user should be able to access WOrdPress page using Loadbalancer IP.
