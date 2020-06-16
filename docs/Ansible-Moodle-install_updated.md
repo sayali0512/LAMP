@@ -46,7 +46,7 @@ sudo passwd azureadmin
 - The Ansible VM will be used to execute the Moodle installation script. To deploy the Ansible VM, you use the ARM Template and provide input parameters describing the Controller VM and the new database that will be created during the installation of Moodle.
 	
 - Make sure that you are deploying Ansible VM into the same Azure resource group and region as the Controller VM.
-- Use the ARM Template to start the Ansible VM deployment.
+- Use the [ARM Template](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fummadisudhakar%2FLAMP%2Fansible_playbook_mat32%2Fansibledeploy-moodle.json)7 to start the Ansible VM deployment.
 - Enter the Controller VM information that you gathered earlier:
 	*	Controller VM name
 	*	SSH public key
