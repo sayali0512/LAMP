@@ -6,10 +6,10 @@ The following diagram shows how the required system components participate in th
 
 ## Prerequisites
 To install Moodle, you must prepare your system environment as follows:
-- Deploy a LAMP stack (the Controller VM will be created that will host the Moodle installation). To support the current installation script, the LAMP stack must be running:
+- Deploy a LAMP stack (the Controller VM will be created that will host the Moodle installation). To support the current installation, the LAMP stack must be running:
 	*	Ubuntu 16.04 LTS
 	*	Nginx web server 1.10.3
-	*	MySQL PaaS 5.6,5.7 or 8.0 database server
+	*	MySQL PaaS 5.6, 5.7 or 8.0 database server
 	*	PHP 7.2, 7.3, or 7.4 
 - Make sure the Ansible VM is located in the Azure resource group and region that hosts the Controller VM.
 
@@ -72,7 +72,7 @@ sudo passwd azureadmin
 
 - The Ansible VM executes the moodle_script.sh script, which installs Moodle using an Ansible playbook.
 
-- The run.sh file runs the Ansible script wordpress_script.sh consisting of an Ansible playbook with the following roles:
+- The run.sh file runs the Ansible script moodle_script.sh consisting of an Ansible playbook with the following roles:
 
 - Role: SSH Key Configuration 
 	Generates the SSH key pair and copies the key pair to the Controller VM using password authentication.
