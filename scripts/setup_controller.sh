@@ -52,9 +52,8 @@ set -ex
     echo $thumbprintSslCert >> /tmp/vars.txt
     echo $thumbprintCaCert >> /tmp/vars.txt
     echo $nfsByoIpExportPath >> /tmp/vars.txt
-    echo $storageAccountType >>/tmp/vars.txt
+    #echo $storageAccountType >>/tmp/vars.txt
     echo $fileServerDiskSize >>/tmp/vars.txt
-
     echo $phpVersion >> /tmp/vars.txt
     echo $cmsApplication    >>/tmp/vars.txt
     echo $lbDns             >>/tmp/vars.txt
@@ -111,7 +110,7 @@ set -ex
         apt-get update
         apt-get install -y postgresql-client-9.6
     fi
-
+    if [ "$fileServerType" = "azurefiles" ]; then
     # install azure cli & setup container
         echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ wheezy main" | \
             sudo tee /etc/apt/sources.list.d/azure-cli.list
@@ -120,35 +119,7 @@ set -ex
         sudo apt-get -y install apt-transport-https >> /tmp/apt4.log
         sudo apt-get -y update > /dev/null
         sudo apt-get -y install azure-cli >> /tmp/apt4.log
-
-
-      # FileStorage accounts can only be used to store Azure file shares;
-        # Premium_LRS will support FileStorage kind
-        # No other storage resources (blob containers, queues, tables, etc.) can be deployed in a FileStorage account.
-        if [ $storageAccountType != "Premium_LRS" ]; then
-		az storage container create \
-		    --name objectfs \
-		    --account-name $storageAccountName \
-		    --account-key $storageAccountKey \
-		    --public-access off \
-		    --fail-on-exist >> /tmp/wabs.log
-
-		az storage container policy create \
-		    --account-name $storageAccountName \
-		    --account-key $storageAccountKey \
-		    --container-name objectfs \
-		    --name readwrite \
-		    --start $(date --date="1 day ago" +%F) \
-		    --expiry $(date --date="2199-01-01" +%F) \
-		    --permissions rw >> /tmp/wabs.log
-
-		sas=$(az storage container generate-sas \
-		    --account-name $storageAccountName \
-		    --account-key $storageAccountKey \
-		    --name objectfs \
-		    --policy readwrite \
-		    --output tsv)
-	fi
+    fi
 
     if [ $fileServerType = "gluster" ]; then
         # mount gluster files system
