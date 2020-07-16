@@ -47,6 +47,8 @@ function get_setup_params_from_configs_json
     export nfsHaLbIP=$(echo $json | jq -r .fileServerProfile.nfsHaLbIP)
     export nfsHaExportPath=$(echo $json | jq -r .fileServerProfile.nfsHaExportPath)
     export nfsByoIpExportPath=$(echo $json | jq -r .fileServerProfile.nfsByoIpExportPath)
+    export storageAccountType=$(echo $json | jq -r .moodleProfile.storageAccountType)
+    export fileServerDiskSize=$(echo $json | jq -r .fileServerProfile.fileServerDiskSize)
     # passing php versions $phpVersion from UI
     export phpVersion=$(echo $json | jq -r .phpProfile.phpVersion)
     export cmsApplication=$(echo $json | jq -r .applicationProfile.cmsApplication)
@@ -278,12 +280,14 @@ function create_azure_files_share
     local storageAccountName=$2
     local storageAccountKey=$3
     local logFilePath=$4
+    local fileServerDiskSize=$5
 
     az storage share create \
         --name $shareName \
         --account-name $storageAccountName \
         --account-key $storageAccountKey \
-        --fail-on-exist >> $logFilePath
+        --fail-on-exist >>$logFilePath \
+        --quota $fileServerDiskSize
 }
 
 function setup_and_mount_gluster_share
