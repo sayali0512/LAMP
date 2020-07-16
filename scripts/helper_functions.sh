@@ -47,7 +47,7 @@ function get_setup_params_from_configs_json
     export nfsHaLbIP=$(echo $json | jq -r .fileServerProfile.nfsHaLbIP)
     export nfsHaExportPath=$(echo $json | jq -r .fileServerProfile.nfsHaExportPath)
     export nfsByoIpExportPath=$(echo $json | jq -r .fileServerProfile.nfsByoIpExportPath)
-    export storageAccountType=$(echo $json | jq -r .moodleProfile.storageAccountType)
+    export storageAccountType=$(echo $json | jq -r .lampProfile.storageAccountType)
     export fileServerDiskSize=$(echo $json | jq -r .fileServerProfile.fileServerDiskSize)
     # passing php versions $phpVersion from UI
     export phpVersion=$(echo $json | jq -r .phpProfile.phpVersion)
