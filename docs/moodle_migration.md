@@ -1,8 +1,6 @@
-# Manual Migration
+# Moodle Migration
 
-This document explains how to manually migrate Moodle from OnPrem to Azure. 
-
-The following diagram shows how the required system components participate in the installation process.
+This document explains how to  migrate Moodle from OnPrem servers to Azure cloud. 
 
 ## Prerequisites
 
@@ -16,7 +14,7 @@ The following diagram shows how the required system components participate in th
 
 ## Migration 
 
-Manual Migration involes following steps,
+Moodle Migration involes following steps,
 
 - Data Export from OnPrem to Azure Cloud
 - Import data to Azure cloud.
@@ -24,18 +22,24 @@ Manual Migration involes following steps,
 
 ## Data Export from OnPrem to Azure Cloud
 
-![Workflow](https://github.com/krishnaitalent/LAMP/blob/lamp_docmentation/images/moodle_manual_migration_export.png)
+- Create Azure Blob storage in the Azure subscription and create below folders,
+		- moodle 
+		- moodledata
+		- configurations
+		- dbbackup
 
-Install WPCLI on the OnPrem server.
-Make a tar file of the Moodle folder. Ex: moodle.tar.gz
-Make a tar file of the Moodle data folder. Ex: moodledata.tar.gz
-Make a tar file of php, nginx configurations. Ex: config.tar.gz
-Take the back of the MySQL DB.
-Copy above backup files Azure Blob storage.
+![Workflow](https://github.com/krishnaitalent/LAMP/blob/lamp_docmentation/images/moodle_export.png)
+
+- Make a tar file of the Moodle folder. Ex: /moodle 
+- Make a tar file of the Moodle data folder. Ex: /moodledata
+- Make a tar file of php, nginx & moodle configurations. Ex: config.tar.gz
+- Take the back of the MySQL DB.
+- Use AZCopy to above backup files respective folder in Azure Blob storage.
+	
 
 ## Import data to Azure cloud
 
-![Workflow](https://github.com/krishnaitalent/LAMP/blob/lamp_docmentation/images/moodle_manual_migration_import.png)
+![Workflow](https://github.com/krishnaitalent/LAMP/blob/lamp_docmentation/images/moodle_migration_import.png)
 
 ### Option 1:
 
@@ -43,11 +47,20 @@ Copy above backup files Azure Blob storage.
 There are different kinds of deployments where user can pick one depending on the Business requirement.
 
 - This will install infra & Moodle as per the predefined deployment types.
+	* Virtual Network, Subnets
+	* Infrastructure includes Azure load balancer or Application gateway.
+	* VM scaleset for auto scaling.
+	* Storage account Ex: NFS, Gluserfs, Azure Files
+	* Network Sercirity Groups.
+	* Redis Cache
 - More options are defined through custom template deployment.
+	* Click here to choose Fully configurable deployment
+	* Click Deploy to Azure button and it should go to Azure sbscription custom deployment page after successful login.
 - Copy the moodle & moodle data files from Azure blob storage to shared folder in the Azure VM.
-- Configure moodle, certs, PHP, nginx configuration based on the onprem.
 - Create Database for Moodle.
-- set the Moodle related folder permissions.
+- Set the Moodle related folder permissions.
+- Configure moodle, certs, PHP, nginx configuration based on the onprem.
+
 
 ## Option 2
 
@@ -56,9 +69,10 @@ There are different kinds of deployments where user can pick one depending on th
 - Install LAMP stack using a shell script or manual install on Azure VMs.
 - Copy the PHP, nginx configurations from blob to azure using a script.
 - Copy Moodle folder from blob storage to azure file storage which will be used by the VM’s
-- Configure moodle, certs, PHP, nginx configuration based on the onprem.
 - Create Database for Moodle.
 - set the Moodle related folder permissions.
+- Configure moodle, certs, PHP, nginx configuration based on the onprem.
+
 
 
 
